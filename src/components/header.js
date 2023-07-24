@@ -1,5 +1,5 @@
 const Header = (title, date, temp) => {
-  // [x] TASK 1
+  // # [x] TASK 1
   // - Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
   // - The html tags used, the hierarchy of elements and their attributes must match the provided markup exactly!
   // - The text inside elements will be set using their `textContent` property (NOT `innerText`).
@@ -17,27 +17,27 @@ const Header = (title, date, temp) => {
   const containerTitle = document.createElement("h1");
   const containerTemp = document.createElement("span");
 
-  // ?create classes/attributes
+  // - create classes/attributes
   container.classList.add("header");
   containerDate.classList.add("date");
   containerTemp.classList.add("temp");
 
-  // ?set the heirarchy
+  // - set the heirarchy
   container.appendChild(containerDate);
   container.appendChild(containerTitle);
   container.appendChild(containerTemp);
 
-  // ?Add text content
+  // - Add text content
   containerDate.textContent = date;
   containerTitle.textContent = title;
   containerTemp.textContent = temp;
 
-  console.log(container);
+  // console.log(container);
   return container;
 };
 
 const headerAppender = (selector) => {
-  // [x] TASK 2
+  // # [x] TASK 2
   // Implement this function taking a css selector as its only argument.
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.

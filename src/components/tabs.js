@@ -1,6 +1,6 @@
 import axios from "axios";
 const Tabs = (topics) => {
-  // [x]TASK 3
+  // # [x] TASK 3
   /*
   - Implement this function which takes an array of strings ("topics") as its only argument.
   - As an example, if the topics passed are ['javascript', 'bootstrap', 'technology'] then the function returns the markup below.
@@ -22,36 +22,50 @@ const Tabs = (topics) => {
     title.textContent = topic;
     topicWrapper.appendChild(title);
   });
+  console.log(topicWrapper);
   return topicWrapper;
 };
 Tabs(["javascript", "json", "basketball"]);
 
 const tabsAppender = (selector) => {
-  // [ ]TASK 4
+  // # TASK 4
 
   // Implement this function which takes a css selector as its only argument.
   // It should obtain topics from this endpoint: `http://localhost:5001/api/topics` (test it with a console.log!).
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
 
-  // *Code here
   /*
   # Notes
-  - need to do an axios.get('http://localhost:5001/api/topics')
+  [x] need to do an axios.get('http://localhost:5001/api/topics')
+  [x] find the array of topics inside the response
+  [ ] append the tabs to the element in the DOM that matches
 
   */
+  let element = document.querySelector(selector);
   axios
     .get("http://localhost:5001/api/topics")
     .then((res) => {
-      let newSelector = document.querySelector(selector);
-      topics.forEach((topic) => {
-        newSelector.appendChild(Tabs(topics));
+      /*
+      What we're wanting to do here is:
+      element.appendChild(topics[0])
+      element.appendChild(topics[1])
+      element.appendChild(topics[2])
+      element.appendChild(topics[3])
+      */
+      res.data.topics.forEach((topic) => {
+        //so far so good
+        Tabs(topic);
+        element.appendChild(topic);
+        // console.log(element);
       });
-      return newSelector;
     })
     .catch((err) => {
-      console.log("error");
+      console.error(err);
     });
+  console.log(element);
+  return element;
 };
+tabsAppender();
 
 export { Tabs, tabsAppender };

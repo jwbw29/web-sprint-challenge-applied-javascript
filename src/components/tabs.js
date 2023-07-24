@@ -1,5 +1,5 @@
 const Tabs = (topics) => {
-  // [ ]TASK 3
+  // [x]TASK 3
   /*
   - Implement this function which takes an array of strings ("topics") as its only argument.
   - As an example, if the topics passed are ['javascript', 'bootstrap', 'technology'] then the function returns the markup below.
@@ -15,8 +15,7 @@ const Tabs = (topics) => {
   const topicWrapper = document.createElement("div");
 
   topicWrapper.classList.add("topics");
-  const topicsArray = topics.split(","); //?This is because apparently 'topics' isn't coming through as an array
-  topicsArray.forEach((topic) => {
+  topics.forEach((topic) => {
     const title = document.createElement("div");
     title.classList.add("tab");
     title.textContent = topic;
@@ -25,7 +24,7 @@ const Tabs = (topics) => {
   console.log(topicWrapper);
   return topicWrapper;
 };
-Tabs("javascript", "json", "basketball");
+Tabs(["javascript", "json", "basketball"]);
 
 const tabsAppender = (selector) => {
   // [ ]TASK 4

@@ -71,6 +71,5 @@ const tabsAppender = (selector) => {
       console.error(err);
     });
 };
-tabsAppender("body");
 
 export { Tabs, tabsAppender };

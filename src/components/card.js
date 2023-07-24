@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Card = (article) => {
   // # [x] TASK 5
   /*
@@ -53,22 +55,32 @@ const cardAppender = (selector) => {
   * However, the articles do not come organized in a single, neat array. Inspect the response closely!
   -  Create a card from each and every article object in the response, using the Card component.
   -  Append each card to the element in the DOM that matches the selector passed to the function.
-  - 
-*/
+  */
+  // *CODE HERE
+  axios
+    .get("http://localhost:5001/api/articles")
+    .then((res) => {
+      const articlesObj = res.data.articles;
+      console.log(articlesObj);
+      console.log(typeof articlesObj);
+      // ! Think we need to loop through this mess
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 
-
-// # Tabs work
-// axios
-// .get("http://localhost:5001/api/topics")
-// .then((res) => {
-//   const newArr = res.data.topics;
-//   const element = document.querySelector(selector);
-//   element.appendChild(Tabs(newArr));
-//   return element;
-// })
-// .catch((err) => {
-//   console.error(err);
-// });
+  // * Previous work on tabs
+  // axios
+  // .get("http://localhost:5001/api/topics")
+  // .then((res) => {
+  //   const newArr = res.data.topics;
+  //   const element = document.querySelector(selector);
+  //   element.appendChild(Tabs(newArr));
+  //   return element;
+  // })
+  // .catch((err) => {
+  //   console.error(err);
+  // });
 };
 
 export { Card, cardAppender };

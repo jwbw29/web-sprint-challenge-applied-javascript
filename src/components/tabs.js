@@ -55,8 +55,11 @@ const tabsAppender = (selector) => {
       */
       res.data.topics.forEach((topic) => {
         //so far so good
-        Tabs(topic);
-        element.appendChild(topic);
+        // [ ] call the function so that we can create the container
+        // [ ] append what that function returns to the 'element' created here
+        console.log(topic);
+
+        element.appendChild(Tabs(topic));
         // console.log(element);
       });
     })
@@ -66,6 +69,6 @@ const tabsAppender = (selector) => {
   console.log(element);
   return element;
 };
-tabsAppender();
+tabsAppender("span");
 
 export { Tabs, tabsAppender };

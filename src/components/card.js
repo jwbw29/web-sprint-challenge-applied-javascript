@@ -1,5 +1,5 @@
 const Card = (article) => {
-  // # [ ] TASK 5
+  // # [x] TASK 5
   /*
    - Implement this function, which should return the markup you see below.
    - It takes as its only argument an "article" object with `headline`, `authorPhoto` and `authorName` properties.
@@ -18,6 +18,31 @@ const Card = (article) => {
   // </div>
 */
   //  *code here
+  // [x] Create the elements
+  const articleWrapper = document.createElement("div");
+  const artHeadline = document.createElement("div");
+  const artAuthorWrapper = document.createElement("div");
+  const artImgContainer = document.createElement("div");
+  const img = document.createElement("img");
+  const artAuthorName = document.createElement("span");
+
+  // [x] Create classes/attributes/content
+  articleWrapper.classList.add("card");
+  artHeadline.classList.add("headline");
+  artHeadline.textContent = article.headline;
+  artAuthorWrapper.classList.add("author");
+  artImgContainer.classList.add("img-container");
+  img.src = article.authorPhoto;
+  artAuthorName.textContent = article.authorName;
+
+  // [x] create hierarchy/append
+  articleWrapper.appendChild(artHeadline);
+  articleWrapper.appendChild(artAuthorWrapper);
+  artAuthorWrapper.appendChild(artImgContainer);
+  artAuthorWrapper.appendChild(artAuthorName);
+  artImgContainer.appendChild(img);
+
+  return articleWrapper;
 };
 
 const cardAppender = (selector) => {
@@ -25,11 +50,25 @@ const cardAppender = (selector) => {
   /*
   -  Implement this function that takes a css selector as its only argument.
   -  It should obtain articles from this endpoint: `http://localhost:5001/api/articles` (test it with console.log!!).
-  -  However, the articles do not come organized in a single, neat array. Inspect the response closely!
+  * However, the articles do not come organized in a single, neat array. Inspect the response closely!
   -  Create a card from each and every article object in the response, using the Card component.
   -  Append each card to the element in the DOM that matches the selector passed to the function.
   - 
 */
+
+
+// # Tabs work
+// axios
+// .get("http://localhost:5001/api/topics")
+// .then((res) => {
+//   const newArr = res.data.topics;
+//   const element = document.querySelector(selector);
+//   element.appendChild(Tabs(newArr));
+//   return element;
+// })
+// .catch((err) => {
+//   console.error(err);
+// });
 };
 
 export { Card, cardAppender };

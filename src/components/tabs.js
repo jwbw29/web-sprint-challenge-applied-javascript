@@ -14,7 +14,6 @@ const Tabs = (topics) => {
   // </div>
   //
   const topicWrapper = document.createElement("div");
-
   topicWrapper.classList.add("topics");
   topics.forEach((topic) => {
     const title = document.createElement("div");
@@ -22,13 +21,11 @@ const Tabs = (topics) => {
     title.textContent = topic;
     topicWrapper.appendChild(title);
   });
-  // console.log(topicWrapper);
   return topicWrapper;
 };
-Tabs(["javascript", "json", "basketball"]);
 
 const tabsAppender = (selector) => {
-  // # TASK 4
+  // # [x] TASK 4
 
   // Implement this function which takes a css selector as its only argument.
   // It should obtain topics from this endpoint: `http://localhost:5001/api/topics` (test it with a console.log!).
@@ -40,7 +37,6 @@ const tabsAppender = (selector) => {
     .then((res) => {
       const newArr = res.data.topics;
       const element = document.querySelector(selector);
-
       element.appendChild(Tabs(newArr));
       return element;
     })

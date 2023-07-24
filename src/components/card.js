@@ -1,5 +1,5 @@
 const Card = (article) => {
-  // TASK 5
+  // [ ]TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
   // It takes as its only argument an "article" object with `headline`, `authorPhoto` and `authorName` properties.
@@ -20,7 +20,7 @@ const Card = (article) => {
 }
 
 const cardAppender = (selector) => {
-  // TASK 6
+  // [ ]TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
   // It should obtain articles from this endpoint: `http://localhost:5001/api/articles` (test it with console.log!!).

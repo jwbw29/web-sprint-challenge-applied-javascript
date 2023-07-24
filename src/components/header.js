@@ -44,7 +44,7 @@ const headerAppender = (selector) => {
   // - HINT: querySelector can take in a string (ie querySelector("#wrapper")) but it can also take in a variable (ie querySelector(selector)).
   // We are taking care of passing in the correct selector on line 16, so all that you need to do is pass it into the querySelector method for the tests to work!
   let newSelector = document.querySelector(selector);
-  newSelector.appendChild(Header("title", "date", "temp"));
+  newSelector.appendChild(Header("BloomTech Times", "July 23, 2023", "88"));
   return newSelector;
 };
 

@@ -42,11 +42,11 @@ const tabsAppender = (selector) => {
   [ ] append the tabs to the element in the DOM that matches
 
   */
-  let element = document.querySelector(selector);
   axios
     .get("http://localhost:5001/api/topics")
     .then((res) => {
-      console.log(res.data.topics);
+      let newArr = res.data.topics;
+      console.log(newArr);
       /*
       What we're wanting to do here is:
       element.appendChild(topics[0])
@@ -54,22 +54,22 @@ const tabsAppender = (selector) => {
       element.appendChild(topics[2])
       element.appendChild(topics[3])
       */
-      // res.data.topics.forEach((item) => {
-      //   //so far so good
-      //   console.log(item);
-      //   // [ ] call the function so that we can create the container
-      //   // [ ] append what that function returns to the 'element' created here
-      //   // console.log(selector);
+      let element = document.querySelector(selector);
+      newArr.forEach((item) => {
+        //so far so good
+        console.log(item);
+        // [ ] call the function so that we can create the container
+        // [ ] append what that function returns to the 'element' created here
+        // console.log(selector);
 
-      //   element.appendChild(Tabs(res.data.topics[item]));
-      //   // console.log(element);
-      //   return element;
-      // });
+        element.appendChild(Tabs(newArr));
+        // console.log(element);
+      });
+      return element;
     })
     .catch((err) => {
       console.error(err);
     });
-  console.log(element);
 };
 tabsAppender("body");
 

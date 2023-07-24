@@ -22,7 +22,7 @@ const Tabs = (topics) => {
     title.textContent = topic;
     topicWrapper.appendChild(title);
   });
-  console.log(topicWrapper);
+  // console.log(topicWrapper);
   return topicWrapper;
 };
 Tabs(["javascript", "json", "basketball"]);
@@ -35,36 +35,13 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
 
-  /*
-  # Notes
-  [x] need to do an axios.get('http://localhost:5001/api/topics')
-  [x] find the array of topics inside the response
-  [ ] append the tabs to the element in the DOM that matches
-
-  */
   axios
     .get("http://localhost:5001/api/topics")
     .then((res) => {
-      let newArr = res.data.topics;
-      console.log(newArr);
-      /*
-      What we're wanting to do here is:
-      element.appendChild(topics[0])
-      element.appendChild(topics[1])
-      element.appendChild(topics[2])
-      element.appendChild(topics[3])
-      */
-      let element = document.querySelector(selector);
-      newArr.forEach((item) => {
-        //so far so good
-        console.log(item);
-        // [ ] call the function so that we can create the container
-        // [ ] append what that function returns to the 'element' created here
-        // console.log(selector);
+      const newArr = res.data.topics;
+      const element = document.querySelector(selector);
 
-        element.appendChild(Tabs(newArr));
-        // console.log(element);
-      });
+      element.appendChild(Tabs(newArr));
       return element;
     })
     .catch((err) => {

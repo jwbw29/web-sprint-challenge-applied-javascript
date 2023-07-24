@@ -1,12 +1,12 @@
 const Card = (article) => {
   // # [ ] TASK 5
-  // ---------------------
-  // Implement this function, which should return the markup you see below.
-  // It takes as its only argument an "article" object with `headline`, `authorPhoto` and `authorName` properties.
-  // The tags used, the hierarchy of elements and their attributes must match the provided markup exactly!
-  // The text inside elements will be set using their `textContent` property (NOT `innerText`).
-  // Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
-  //
+  /*
+   - Implement this function, which should return the markup you see below.
+   - It takes as its only argument an "article" object with `headline`, `authorPhoto` and `authorName` properties.
+   - The tags used, the hierarchy of elements and their attributes must match the provided markup exactly!
+   - The text inside elements will be set using their `textContent` property (NOT `innerText`).
+   - Add a listener for click events so that when a user clicks on a card, the headline of the article is logged to the console.
+  
   // <div class="card">
   //   <div class="headline">{ headline }</div>
   //   <div class="author">
@@ -16,7 +16,8 @@ const Card = (article) => {
   //     <span>By { authorName }</span>
   //   </div>
   // </div>
-  //
+*/
+  //  *code here
 };
 
 const cardAppender = (selector) => {

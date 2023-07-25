@@ -50,37 +50,58 @@ const Card = (article) => {
 const cardAppender = (selector) => {
   // # [ ] TASK 6
   /*
-  -  Implement this function that takes a css selector as its only argument.
-  -  It should obtain articles from this endpoint: `http://localhost:5001/api/articles` (test it with console.log!!).
+  [x] Implement this function that takes a css selector as its only argument.
+
+  [x] It should obtain articles from this endpoint: `http://localhost:5001/api/articles` (test it with console.log!!).
+
   * However, the articles do not come organized in a single, neat array. Inspect the response closely!
-  -  Create a card from each and every article object in the response, using the Card component.
-  -  Append each card to the element in the DOM that matches the selector passed to the function.
+      - Articles is an object, with each property being a topic
+      - Each topic is an array of different articles
+      - each index of the topic array is an object containing
+        - authorName
+        - authorPhoto
+        - headline
+        - id (which appears to be some sort of GUID)
+      - that means each index, is almost equivalent to "article" that's getting passed in to the Card() function
+
+  [ ] Create a card from each and every article object in the response, using the Card component.
+
+  [ ] Append each card to the element in the DOM that matches the selector passed to the function.
   */
   // *CODE HERE
+
   axios
     .get("http://localhost:5001/api/articles")
     .then((res) => {
-      const articlesObj = res.data.articles;
-      console.log(articlesObj);
-      console.log(typeof articlesObj);
-      // ! Think we need to loop through this mess
+      const bootstrap = res.data.articles.bootstrap;
+      const javascript = res.data.articles.javascript;
+      const jquery = res.data.articles.jquery;
+      const node = res.data.articles.node;
+      const technology = res.data.articles.technology;
+
+      const element = document.querySelector(selector);
+
+      bootstrap.forEach((item) => {
+        element.appendChild(Card(item));
+      });
+      javascript.forEach((item) => {
+        element.appendChild(Card(item));
+      });
+      jquery.forEach((item) => {
+        element.appendChild(Card(item));
+      });
+      node.forEach((item) => {
+        element.appendChild(Card(item));
+      });
+      technology.forEach((item) => {
+        element.appendChild(Card(item));
+      });
+      console.log(element);
+      return element;
     })
     .catch((err) => {
       console.error(err);
     });
-
-  // * Previous work on tabs
-  // axios
-  // .get("http://localhost:5001/api/topics")
-  // .then((res) => {
-  //   const newArr = res.data.topics;
-  //   const element = document.querySelector(selector);
-  //   element.appendChild(Tabs(newArr));
-  //   return element;
-  // })
-  // .catch((err) => {
-  //   console.error(err);
-  // });
 };
 
 export { Card, cardAppender };
